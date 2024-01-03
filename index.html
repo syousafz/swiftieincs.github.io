@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://kit.fontawesome.com/ede6bc144e.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="description" content="blog of a uw student">
     <title>swiftie-in-cs!</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel= "stylesheet" href="style.css">
   </head>
-  <body style="background-color:LavenderBlush;">
+  <body style="background-color:var(--primary-color);">
   <div id="header">
     <div class="container">
       <nav>
-        <ul>
+        <ul id="sidemenu">
           <li><a href="#header">Home</a></li>
           <li><a href="#blog">Blog</a></li>
           <li><a href="#resume">Resume</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#music">Music</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
         </ul>
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+      </nav>
   </div>
 </div>
 <main>
@@ -31,14 +36,14 @@
 <h2 style="color:purple;">swiftie in cs</h2>
 <style>
 h2 {
-  font-family: fantasy;
+  font-family: Lato;
   text-align: center;
 }
 </style>
 <hr/>
 <div id= "pages">
 
-<h2>Hey, I'm Shabano!</h2>
+<h2>Hey, I'm <span id="auto-input"></span></h2>
 <img src="./IMG_1550.jpg" width="500" height="333" class="center">
 <p style="color: purple;">Hi everyone! My name is Shabano and I'm in my 1B term of the
 Math/BBA Double Degree program at the University of Waterloo. I am really interested
@@ -80,7 +85,7 @@ margin-right: auto;
         to a dark blue, something I had never seen before. I also loved to just sit and watch the waves roll by; I
         had never experienced such large waves before. The sand was just like clay and together, everything felt unreal.
     </p2>
-    <img src="./IMG_5519.jpg" width="200" height="333" class="center">
+    <img src="./IMG_5519.jpg" width="500" height="333" class="center">
 </div>
 </div>
 </div>
@@ -103,8 +108,10 @@ margin-right: auto;
       <h2>This website you're on right now!!</h2>
       <h2>A weather webapp that tells you the weather of any city!</h2>
       <div id="weather-container" align="center">
-       <iframe src="https://syousafz.github.io/weather-app/" width="800px" height="600px" frameborder="0"></iframe>
+       <iframe src="https://syousafz.github.io/weather-app/" width="100%" height="600px" frameborder="0"></iframe>
    </div>
+
+
     </div>
   </div>
 </div>
@@ -144,10 +151,89 @@ margin-right: auto;
   </div>
 </div>
 
-  
-</div>
-<footer>
+<div id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="contact-left"></div>
+      <h1 class="sub-title">Contact Me!</h1>
+      <h2>Talk to me about <span id="talk"<</span></h2>
+      <div class="contact-right">
+        <form name="submit-to-google-sheet">
+          <input type="text" name="Name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+          <button type="submit" class="btn btn2">Submit</button>
+        </form>
+        <span id="msg"></span>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/syousafz/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/syousafz"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:syousafz@uwaterloo.ca"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
 
+    </div>
+  </div>
+  <div class="copyright">
+    <p>Copyright &copy Shabano Yousafzai. Made with HTML/CSS, JavaScript and <i class="fa-solid fa-heart"></i></p>
+  </div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+     var sidemenu = document.getElementById("sidemenu");
+
+     function openmenu(){
+       sidemenu.style.right = "0";
+     }
+     function closemenu(){
+       sidemenu.style.right = "-300px";
+     }
+
+</script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzBf7FSLVMycz4TGDd6GGw7Olt9DiKyIJlhxYFAEe7t_1j46J-mW2nZtsfAeTrNV4M/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML = "Message sent successfully!"
+        setTimeout(function(){
+          msg.innerHTML = ""
+        },5000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+var typed = new Typed('#auto-input', {
+  strings: ["Shabano!", "a swiftie!", "a fast learner", "a software developer!", "a mathematics lover!", "a hiker!", "happy to meet you!"],
+  typeSpeed: 100,
+  backSpeed: 100,
+  loop: true
+});
+</script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+var typed = new Typed('#talk', {
+  strings: ["university!", "all things Taylor Swift!", "computer science!", "math!", "travel!", "music!"],
+  typeSpeed: 100,
+  backSpeed: 100,
+  loop: true
+});
+</script>
+<footer>
 
 </footer>
   </body>
