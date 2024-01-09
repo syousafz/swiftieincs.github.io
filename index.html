@@ -7,6 +7,18 @@
     <title>swiftie-in-cs!</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel= "stylesheet" href="style.css">
+<style>
+  h1 a {
+    color: #ababab;
+    transition: transform 0.5s;
+    text-decoration: none;
+  }
+
+  h1 a:hover {
+    color: purple;
+    transform: translateY(-5px);
+  }
+</style>
   </head>
   <body style="background-color:var(--primary-color);">
   <div id="header">
@@ -104,8 +116,18 @@ margin-right: auto;
 <div id="projects">
   <div class="container">
     <div class="row">
-      <h1>Projects</h1>
+      <h1>
+        Projects
+        <a href="https://github.com/syousafz" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github" style="font-size: 24px; margin-left: 8px;"></i>
+        </a>
+      </h1>
       <h2>This website you're on right now!!</h2>
+      <h2>UpliftMe - your positive affirmations companion</h2>
+      <div class="project-image-container">
+        <img src="UpliftMeHome.png" alt="UpliftMe Home" class="project-image">
+        <img src="UpliftMeMenuScreen.png" alt="UpliftMe Menu" class="project-image">
+      </div>
       <h2>A weather webapp that tells you the weather of any city!</h2>
       <div id="weather-container" align="center">
        <iframe src="https://syousafz.github.io/weather-app/" width="100%" height="600px" frameborder="0"></iframe>
